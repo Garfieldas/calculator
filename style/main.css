@@ -124,3 +124,9 @@ footer{
     font-family: "Press Start 2P", serif;
     font-size: 15px;
 }
+
+@media only screen and (max-width: 600px){
+    .calculator{
+        margin-top: -90px;
+    }
+}
