@@ -6,7 +6,7 @@ const buttonsList = buttons.querySelectorAll('button');
 // Convert Nodelist to an actuall array to use array methods
 const newList = Array.from(buttonsList);
 
-const specialKeys = ['+', '-', '*', '/', '=', 'C'];
+const specialKeys = ['+', '-', '*', '/', '=', 'C', '.'];
 const operatorKeys = ['+', '-', '*', '/'];
 
 // All buttons that contains numbers array creation
@@ -20,6 +20,7 @@ const operators = newList.filter(operator => (
 
 const equal = document.querySelector('#equalBtn');
 const clear = document.querySelector('#clearBtn');
+const dotBtn = document.querySelector('#dotBtn');
 
 let num1 = 0;
 let operation = 0;
@@ -43,13 +44,18 @@ let firstNum = (e) => {
     num1 = screen.value;
     operation = e.target.textContent;
     screen.value = '';
+    dotBtn.addEventListener('click', getValue,
+        {
+            once: true
+        }
+     );
 
 }
 
 let result = () => {
     num2 = screen.value;
-    num1 = parseInt(num1);
-    num2 = parseInt(num2);
+    num1 = parseFloat(num1);
+    num2 = parseFloat(num2);
     switch (operation) {
         case '+':
             answer=sum(num1, num2);
@@ -84,12 +90,17 @@ let reset = () => {
 
 numbers.forEach((number) => {
     number.addEventListener("click", getValue);
-    
 });
 
 operators.forEach((operator) => {
     operator.addEventListener("click", firstNum)
 });
+
+dotBtn.addEventListener('click', getValue,
+    {
+        once: true
+    }
+ );
 
 equal.addEventListener("click", result);
 
