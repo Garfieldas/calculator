@@ -6,7 +6,7 @@ const buttonsList = buttons.querySelectorAll('button');
 // Convert Nodelist to an actuall array to use array methods
 const newList = Array.from(buttonsList);
 
-const specialKeys = ['+', '-', '*', '/', '=', 'C', '.'];
+const specialKeys = ['+', '-', '*', '/', '=', 'C', '.', 'Del'];
 const operatorKeys = ['+', '-', '*', '/'];
 
 // All buttons that contains numbers array creation
@@ -21,6 +21,7 @@ const operators = newList.filter(operator => (
 const equal = document.querySelector('#equalBtn');
 const clear = document.querySelector('#clearBtn');
 const dotBtn = document.querySelector('#dotBtn');
+const delBtn = document.querySelector('#delBtn');
 
 let num1 = 0;
 let operation = 0;
@@ -88,6 +89,15 @@ let reset = () => {
     screen.value = '';
 }
 
+let Del = () => {
+    screen.value = screen.value.slice(0, -1);
+    dotBtn.addEventListener('click', getValue,
+        {
+            once: true
+        }
+     );
+}
+
 numbers.forEach((number) => {
     number.addEventListener("click", getValue);
 });
@@ -105,3 +115,5 @@ dotBtn.addEventListener('click', getValue,
 equal.addEventListener("click", result);
 
 clear.addEventListener("click", reset);
+
+delBtn.addEventListener("click", Del);

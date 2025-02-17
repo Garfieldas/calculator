@@ -103,6 +103,15 @@ button:hover {
     background: var(--background);
 }
 
+.del {
+    grid-column: span 2;
+    background: rgb(173, 32, 32);
+    color: white;
+}
+.del:hover {
+    background: rgb(74, 74, 207);
+}
+
 footer{
     position: absolute;
     bottom: 0;
