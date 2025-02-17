@@ -28,7 +28,6 @@ let num2 = 0;
 let getValue = (e) => {
     let value = e.target.textContent;
     displayValue(value);
-    return value;
 }
 
 let displayValue = (value) => {
@@ -44,8 +43,6 @@ let firstNum = (e) => {
     num1 = screen.value;
     operation = e.target.textContent;
     screen.value = '';
-    // console.log(num1);
-    // console.log(operation);
 
 }
 
@@ -91,9 +88,7 @@ numbers.forEach((number) => {
 });
 
 operators.forEach((operator) => {
-    operator.addEventListener("click", (e) => {
-        firstNum(e);
-})
+    operator.addEventListener("click", firstNum)
 });
 
 equal.addEventListener("click", result);
